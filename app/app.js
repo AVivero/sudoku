@@ -43,14 +43,15 @@ function setBoard() {
 
 
 function checkSolution(array) {
-    return (checkRows(array) && checkColumns(array) && checkSubCuadrants(array));
+    return (checkSubCuadrants(array) && checkRows(array) && checkColumns(array));
 }
 
 function checkRows(array) {
     var temp = [];
     for (var i = 0; i < array.length; i++) {
+        temp = [];
         for (var j = 0; j < array.length; j++)
-            temp.push[array[i][j]];
+            temp.push(array[i][j]);
         if (!checkArray(temp))
             return false;
     }
@@ -61,8 +62,9 @@ function checkRows(array) {
 function checkColumns(array) {
     var temp = [];
     for (var i = 0; i < array.length; i++) {
+        temp = [];
         for (var j = 0; j < array.length; j++)
-            temp.push[array[j][i]];
+            temp.push(array[j][i]);
         if (!checkArray(temp))
             return false;
     }
@@ -82,13 +84,13 @@ function checkSubCuadrants(array) {
 function getSubCuadrant(array, row, col) {
     var temp = [];
     for (var i = row; i < row + 3; i++) {
-        for (var j = 0; j < col + 3; j++) {
-            temp.push(array[i, j])
+        for (var j = col; j < col + 3; j++) {
+            temp.push(array[i][j]);
         }
     }
     return temp;
 }
 
 function checkArray(array) {
-    return JSON.stringify(array.sort()) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    return JSON.stringify(array.sort()) === JSON.stringify(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
 }
