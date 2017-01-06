@@ -1,20 +1,10 @@
 $(document).ready(function() {
 
-    (function startGame() {
-        $.ajax({
-            url: "http://fvi-grad.com:4004/sudoku",
-            success: function(response) {
-                board = response;
-                setBoard();
-            }
-        });
-    })();
+    startGame();
 
     $('input').on('change', function() {
         if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf($(this).val()) !== -1) {
             board[this.id.charAt(1) - 1][this.id.charAt(2) - 1] = $(this).val();
-            console.log(board[this.id.charAt(1) - 1][this.id.charAt(2) - 1]);
-            console.log(board);
         } else {
             $(this).val('');
         }
@@ -28,19 +18,37 @@ $(document).ready(function() {
             alert('Solution incorrect');
     });
 
+    $('#resetGame').on('click', function() {
+        startGame();
+    });
+
 
 });
 
 var board = [];
 
+function startGame() {
+    $.ajax({
+        url: "http://fvi-grad.com:4004/sudoku",
+        success: function(response) {
+            board = response;
+            originalBoard = response;
+            setBoard();
+        }
+    });
+}
+
 function setBoard() {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board.length; j++) {
             $('#p' + (i + 1) + (j + 1)).val(board[i][j]);
+            if ($('#p' + (i + 1) + (j + 1)).val(board[i][j]).val() != '')
+                $('#p' + (i + 1) + (j + 1)).attr('disabled', 'disabled');
         }
     }
 }
 
+function resetBoard() {}
 
 function checkSolution(array) {
     return (checkSubCuadrants(array) && checkRows(array) && checkColumns(array));

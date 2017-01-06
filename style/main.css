@@ -1,10 +1,30 @@
+body {
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
 table {
     margin: 1em auto;
-    margin-top: 90px;
+    margin-top: 35px;
+    border-color:
+}
+
+h4 {
+    margin-top: 50px;
+    font-size: 50px;
+    color: white;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 td {
     border: 1px solid;
+    font-size: 20px;
 }
 
 td:first-child {
@@ -23,13 +43,16 @@ tr:nth-child(3n) td {
     border-bottom: solid;
 }
 
+button {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 #main {
     font-size: 16px;
     text-align: center;
-}
-
-#checkSolution{
-  margin-top: 40px;
 }
 
 input {
