@@ -38,7 +38,12 @@ function startGame() {
     });
 }
 
+function setEnableInputs() {
+    $('input').removeAttr('disabled');
+}
+
 function setBoard() {
+  setEnableInputs();
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board.length; j++) {
             $('#p' + (i + 1) + (j + 1)).val(board[i][j]);
